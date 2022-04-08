@@ -54,3 +54,41 @@ IIFE 实现的模块化安全性要更高，对于模块作用域的区分更加
 AMD 全称为 Asynchronous Module Definition，即异步模块定义规范。模块根据这个规范，在浏览器环境中会被异步加载，而不会像 CommonJS 规范进行同步加载，也就不会产生同步请求导致的浏览器解析过程阻塞的问题了。
 
 由于没有得到浏览器的原生支持，AMD 规范需要由第三方的 loader 来实现，最经典的就是 requireJS 库了
+
+### ES6 Module
+
+ES Module 已经得到了现代浏览器的内置支持
+
+在现代浏览器中，如果在 HTML 中加入含有`type="module"`属性的 script 标签，那么浏览器会按照 ES Module 规范来进行依赖加载和模块解析，这也是 Vite 在开发阶段实现 no-bundle 的原因，由于模块加载的任务交给了浏览器，即使不打包也可以顺利运行模块代码
+
+ES Module 的浏览器兼容性如今已经相当好了，覆盖了 90% 以上的浏览器份额
+
+Node.js 从 12.20 版本开始正式支持原生 ES Module
+
+如果在 Node.js 环境中，你可以在 package.json 中声明 type: "module"属性:
+
+```js
+//package.json
+{
+  "type":"module"
+}
+```
+
+顺便说一句，在 Node.js 中，即使是在 CommonJS 模块里面，也可以通过 import 方法顺利加载 ES 模块，如下所示:
+
+**文件名后缀需要是 mjs**
+
+```js
+async function func() {
+  // 加载一个 ES 模块
+  // 文件名后缀需要是 mjs
+  const { a } = await import("./module-a.mjs");
+  console.log(a);
+}
+
+func();
+
+module.exports = {
+  func,
+};
+```
