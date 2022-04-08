@@ -1,0 +1,14 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+    "err": {
+      "name": "pnpm",
+      "message": "No package.json (or package.yaml, or package.json5) was found in \"H:\\vite\\code\\03、quick-start\".",
+      "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+      "stack": "pnpm: No package.json (or package.yaml, or package.json5) was found in \"H:\\vite\\code\\03、quick-start\".\n    at readProjectManifest (H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:19815:13)\n    at async Object.readProjectManifestOnly (H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:19819:28)\n    at async readProjectManifestOnly (H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:43733:24)\n    at async Object.handler (H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:177853:24)\n    at async H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:182129:21\n    at async run (H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:182103:34)\n    at async runPnpm (H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:182322:5)\n    at async H:\\Web\\Node\\node-global\\node_modules\\pnpm\\dist\\pnpm.cjs:182314:7"
+    }
+  }
+}

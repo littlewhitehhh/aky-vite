@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"]
+    // 1. noEmit 表示只做类型检查，而不会输出产物文件
+    // 2. 这行配置与 vue-tsc --noEmit --skipLibCheck 命令等效
+    // "noEmit": true
+    // "skipLibCheck": true    //Skip type checking all .d.ts files 跳过所有类型检测
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
