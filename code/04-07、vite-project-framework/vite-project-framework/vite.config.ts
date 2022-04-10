@@ -38,5 +38,11 @@ export default defineConfig({
       ]
     }
   },
-  plugins: [vue({})]
+  plugins: [vue({})],
+  resolve: {
+    //配置别名
+    alias: {
+      "@asset": path.join(__dirname, "src/assets")
+    }
+  }
 });
