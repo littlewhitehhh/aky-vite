@@ -20,23 +20,23 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         //additionalData 的内容会在每个scss文件的开头被引入
-        additionalData: `@import"${variablePath}";`,
-      },
+        additionalData: `@import"${variablePath}";`
+      }
     },
     modules: {
       //一般我们可以通过generateScopeName属性对生效的类名进行自定义
       //其中name表示当前文件名，loacl表示类名
       // '_header_4cstn_1'--->'header-module_header_f-oMp'
-      generateScopedName: "[name]_[local]_[hash:base64:5]",
+      generateScopedName: "[name]_[local]_[hash:base64:5]"
     },
     postcss: {
       plugins: [
         autoprefixer({
           //指定浏览器
-          overrideBrowserslist: ["Chrome >40", "ff>31", "ie 11"],
-        }),
-      ],
-    },
+          overrideBrowserslist: ["Chrome >40", "ff>31", "ie 11"]
+        })
+      ]
+    }
   },
-  plugins: [vue({})],
+  plugins: [vue({})]
 });
