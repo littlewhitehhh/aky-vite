@@ -3,6 +3,9 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { normalizePath } from "vite";
 import autoprefixer from "autoprefixer";
+import svgLoader from "vite-svg-loader"; //加载svg组件
+
+import vueImagemin from "vite-plugin-imagemin";
 
 // 用 normalizePath 解决 window 下的路径问题
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -11,10 +14,13 @@ console.log(variablePath);
 const variable = path.resolve(__dirname, "./src/variable.scss");
 console.log(variable);
 
+const isProduction = process.env.NODE_ENV === "production";
+const CDN_URL = "https://sanyuan.cos.ap-beijing.myqcloud.com/logo.png";
 // https://vitejs.dev/config/
 
 // 原来这里可以直接使用export default啊 export default{}
 export default defineConfig({
+  base: isProduction ? CDN_URL : "/",
   //css相关配置
   css: {
     preprocessorOptions: {
@@ -38,11 +44,19 @@ export default defineConfig({
       ]
     }
   },
-  plugins: [vue({})],
+  plugins: [vue({}), svgLoader()],
   resolve: {
     //配置别名
     alias: {
-      "@asset": path.join(__dirname, "src/assets")
+      "@assets": path.join(__dirname, "src/assets")
     }
+  },
+  //json 配置
+
+  json: {
+    stringify: true //禁止按名导入，导入的 JSON 会被转换为 export default JSON.parse("...")
+  },
+  build: {
+    assetsInlineLimit: 8 * 1024
   }
 });
